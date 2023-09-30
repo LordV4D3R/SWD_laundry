@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { notification } from 'app/model/notification.model';
+import { NotificationService } from 'app/service/notification.service';
 
-declare var $:any;
+declare var $: any;
 
 @Component({
   selector: 'app-notifications',
@@ -9,24 +11,34 @@ declare var $:any;
 })
 export class NotificationsComponent implements OnInit {
 
-  constructor() { }
+  notifications!: Notification[];
+
+  selectedNotification!: Notification;
+
+  constructor(private notificationService: NotificationService) { }
 
   ngOnInit() {
-  }
-  showNotification(from, align){
-      const type = ['','info','success','warning','danger'];
+    this.notificationService.fetchNotificationData().subscribe((data: Notification[]) => {
+      this.notifications = data;
+    });
 
-      var color = Math.floor((Math.random() * 4) + 1);
-      $.notify({
-          icon: "pe-7s-gift",
-          message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-      },{
-          type: type[color],
-          timer: 1000,
-          placement: {
-              from: from,
-              align: align
-          }
-      });
+  };
+
+
+  showNotification(from, align) {
+    const type = ['', 'info', 'success', 'warning', 'danger'];
+
+    var color = Math.floor((Math.random() * 4) + 1);
+    $.notify({
+      icon: "pe-7s-gift",
+      message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+    }, {
+      type: type[color],
+      timer: 1000,
+      placement: {
+        from: from,
+        align: align
+      }
+    });
   }
 }

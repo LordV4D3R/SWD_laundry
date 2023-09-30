@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { NotificationComponent } from './pages/notification/notification.component';
+
 
 const routes: Routes = [
   // {
@@ -25,17 +25,13 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
   },
-  {
-    path: 'notification',
-    component: NotificationComponent,
-  },
 
   {
     path: '',
     component: AdminLayoutComponent,
     children: [
       {
-        path: '',
+        path: 'admin',
         loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(x => x.AdminLayoutModule)
       }]
   },
@@ -49,9 +45,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes, {
-      useHash: true
-    })
+    RouterModule.forRoot(routes)
   ],
   exports: [
   ],

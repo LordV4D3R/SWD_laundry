@@ -1,4 +1,4 @@
-<div class="main-content" >
+<!-- <div class="main-content" >
     <div class="container-fluid">
         <div class="card">
             <div class="header">
@@ -83,4 +83,24 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+
+<p-table [value]="notifications" selectionMode="single" dataKey="code" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr [pSelectableRow]="product">
+            <td>{{product.code}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.quantity}}</td>
+        </tr>
+    </ng-template>
+</p-table>
