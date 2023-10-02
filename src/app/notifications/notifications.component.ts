@@ -7,20 +7,24 @@ declare var $: any;
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+  styleUrls: ['./notifications.component.css'],
+  providers: [NotificationService],
 })
 export class NotificationsComponent implements OnInit {
 
-  notifications!: Notification[];
+  notifications;
 
-  selectedNotification!: Notification;
+  selectedNotification;
 
   constructor(private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.notificationService.fetchNotificationData().subscribe((data: Notification[]) => {
+    this.notificationService.fetchNotificationData().subscribe((data) => {
       this.notifications = data;
+    }, err => {
+      console.log(err);
     });
+    console.log('init');
 
   };
 
