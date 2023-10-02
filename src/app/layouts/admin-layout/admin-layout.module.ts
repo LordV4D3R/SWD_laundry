@@ -17,7 +17,8 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { TableModule } from 'primeng/table';
-import { MatTableModule } from '@angular/material/table';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   imports: [
