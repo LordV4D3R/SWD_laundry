@@ -86,7 +86,7 @@
 </div> -->
 
 
-<p-table [value]="notifications" selectionMode="single" dataKey="code" >
+<!-- <p-table [value]="notifications" selectionMode="single" dataKey="code" >
     <ng-template pTemplate="header">
         <tr>
             <th>Code</th>
@@ -103,4 +103,29 @@
             <td>{{product.quantity}}</td>
         </tr>
     </ng-template>
-</p-table>
+</p-table> -->
+
+
+<mat-table [dataSource]="notifications">
+    <!-- User name Definition -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Age Definition -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Title Definition -->
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+    </ng-container>
+  
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef="['id', 'name', 'address']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['id', 'name', 'address']"></mat-row>
+  </mat-table>

@@ -17,6 +17,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { TableModule } from 'primeng/table';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { TableModule } from 'primeng/table';
     FormsModule,
     LbdModule,
     TableModule,
+    MatTableModule,
     NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE' })
   ],
   declarations: [
